@@ -1,0 +1,46 @@
+{
+  "name": "vue-data-dict",
+  "version": "1.0.0",
+  "description": "data dict for Vue.js",
+  "main": "src/index.js",
+  "unpkg": "dist/vue-data-dict.js",
+  "jsdelivr": "dist/vue-data-dict.js",
+  "sideEffects": false,
+  "files": [
+    "src",
+    "dist",
+    "postinstall.js"
+  ],
+  "scripts": {
+    "build": "webpack --mode production",
+    "lint": "eslint src",
+    "postinstall": "node -e \"require('./postinstall')\""
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/moxun1639/vue-data-dict.git"
+  },
+  "bugs": {
+    "url": "https://github.com/moxun1639/vue-data-dict/issues"
+  },
+  "homepage": "https://github.com/moxun1639/vue-data-dict#readme",
+  "keywords": [
+    "dict",
+    "data dict",
+    "Vue"
+  ],
+  "author": "Moxun<mxnstrive@gmail.com>",
+  "license": "Apache-2.0",
+  "devDependencies": {
+    "@babel/core": "^7.10.5",
+    "@babel/preset-env": "^7.10.4",
+    "babel-loader": "^8.1.0",
+    "eslint": "^7.5.0",
+    "webpack": "^4.43.0",
+    "webpack-cli": "^3.3.8"
+  },
+  "dependencies": {
+    "merge": "^1.2.1",
+    "vue": "^2.6.11"
+  }
+}
