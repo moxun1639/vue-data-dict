@@ -11,12 +11,14 @@ const DEFAULT_DICT_OPTIONS = {
  * @classdesc 字典
  * @property {Object} value 值对象，内部属性名为字典类型名称
  * @property {Object} label 标签对象，内部属性名为字典类型名称
- * @property {Array.<DictMeta>} 字典元数据数组
+ * @property {Object} dict 字段数组，内部属性名为字典类型名称
+ * @property {Array.<DictMeta>} _dictMetas 字典元数据数组
  */
 export default class Dict {
   constructor() {
     this.value = {}
     this.label = {}
+    this.dict = {}
   }
 
   init(options) {
@@ -33,7 +35,7 @@ export default class Dict {
       const type = dictMeta.type
       Vue.set(this.value, type, {})
       Vue.set(this.label, type, {})
-      Vue.set(this, type, [])
+      Vue.set(this.dict, type, [])
       ps.push(loadDict(this, dictMeta))
     })
     return Promise.all(ps)
@@ -44,7 +46,6 @@ export default class Dict {
    * @param {String} type 字典类型
    */
   reloadDict(type) {
-    console.log(type)
     const dictMeta = this._dictMetas.find(e => e.type === type)
     if (dictMeta === undefined) {
       return Promise.reject(`the dict meta of ${type} was not found`)
@@ -71,7 +72,7 @@ function loadDict(dict, dictMeta) {
         console.error('the type of elements in dicts must be DictData')
         dicts = []
       }
-      dict[type].splice(0, 0, ...dicts)
+      dict.dict[type].splice(0, 0, ...dicts)
       dicts.forEach(d => {
         Vue.set(dict.value[type], d.value, d.value)
         Vue.set(dict.label[type], d.value, d.label)
