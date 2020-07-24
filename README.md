@@ -32,7 +32,7 @@ Vue.use(VueDataDict, {
 ```vue
 <template>
   <div>
-    <div v-for="item in dict.dict1" :key="item.value">
+    <div v-for="item in dict.dict.dict1" :key="item.value">
       {{ item.label }}
     </div>
   </div>
@@ -44,6 +44,7 @@ export default {
     'dict1', // only type name
     { // full dict meta
       type: 'dict2',
+      lazy: true, // lazy load
       request(dictMeta) { // get dict2's data
         ...
         return Promise
@@ -52,7 +53,15 @@ export default {
         ...
         return [] // Array.<DictData>
       })
-    }]
+    }],
+  methods: {
+    onDictReady(dict) {
+      // dict ready event
+    },
+    toLoadDict() {
+      this.dict.reloadDict('dict2')
+    },
+  }
 }
 </script>
 ```
