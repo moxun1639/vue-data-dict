@@ -1,0 +1,70 @@
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>My travel plan</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <link rel="stylesheet" href="https://unpkg.com/element-ui/lib/theme-chalk/index.css" />
+    <script src="https://unpkg.com/element-ui/lib/index.js"></script>
+    <script src="/vue-data-dict.js"></script>
+    <script src="/mock.js"></script>
+  </head>
+  <body>
+    <div id="app" style="width: 400px;">
+      <el-form ref="form" :model="form" label-width="80px">
+        <el-form-item>
+          <el-tag>My travel plan</el-tag>
+        </el-form-item>
+        <el-form-item label="Planet">
+          <el-select v-model="form.planet" placeholder="destination" @change="onFormChange">
+            <el-option v-for="item in dict.dict.planet" :label="item.label" :value="item.value"></el-option>
+          </el-select>
+        </el-form-item>
+        <el-form-item label="Days">
+          <el-radio-group v-model="form.days" @change="onFormChange">
+            <el-radio-button v-for="item in dict.dict.day" :label="item.label" :value="item.value"></el-radio-button>
+          </el-radio-group>
+        </el-form-item>
+      </el-form>
+      <el-input type="textarea" v-model="desc"></el-input>
+    </div>
+    <script>
+      Vue.use(MXDICT)
+      var app = new Vue({
+        el: '#app',
+        dicts: [
+          'dict1',
+          {
+            type: 'planet',
+            request: function () {
+              return mockData.listPlanet()
+            },
+          },
+          {
+            type: 'day',
+            request: function () {
+              return mockData.listDay()
+            },
+          },
+        ],
+        data() {
+          return {
+            form: {
+              name: '',
+              planet: '',
+              days: 0,
+            },
+            desc: '',
+          }
+        },
+        methods: {
+          onDictReady(dict) {
+            console.log(dict)
+          },
+          onFormChange() {
+            this.desc = 'I will go [' + this.form.planet + '] for ' + this.form.days
+          },
+        },
+      })
+    </script>
+  </body>
+</html>
