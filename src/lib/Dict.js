@@ -36,6 +36,9 @@ export default class Dict {
       Vue.set(this.value, type, {})
       Vue.set(this.label, type, {})
       Vue.set(this.dict, type, [])
+      if (dictMeta.lazy) {
+        return
+      }
       ps.push(loadDict(this, dictMeta))
     })
     return Promise.all(ps)

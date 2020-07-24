@@ -14,6 +14,7 @@ export default class DictMeta {
     this.responseConverter = options.mapDict || DictOptions.meta.responseConverter
     this.labelField = options.labelField
     this.valueField = options.valueField
+    this.lazy = options.lazy === true
   }
 }
 
