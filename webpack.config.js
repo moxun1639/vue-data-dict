@@ -13,7 +13,7 @@ module.exports = {
   output: {
     path: path.resolve(__dirname, './dist'),
     filename: 'vue-data-dict.js',
-    library: 'MXDICT',
+    library: 'VueDataDict',
     libraryExport: 'default',
     libraryTarget: 'this',
   },
