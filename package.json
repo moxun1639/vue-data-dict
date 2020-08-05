@@ -1,6 +1,6 @@
 {
   "name": "vue-data-dict",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "data dict for Vue.js",
   "main": "src/index.js",
   "unpkg": "dist/vue-data-dict.js",
