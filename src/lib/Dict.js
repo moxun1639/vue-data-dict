@@ -9,14 +9,12 @@ const DEFAULT_DICT_OPTIONS = {
 
 /**
  * @classdesc 字典
- * @property {Object} value 值对象，内部属性名为字典类型名称
  * @property {Object} label 标签对象，内部属性名为字典类型名称
  * @property {Object} dict 字段数组，内部属性名为字典类型名称
  * @property {Array.<DictMeta>} _dictMetas 字典元数据数组
  */
 export default class Dict {
   constructor() {
-    this.value = {}
     this.label = {}
     this.dict = {}
   }
@@ -33,7 +31,6 @@ export default class Dict {
     this._dictMetas = opts.types.map(t => DictMeta.parse(t))
     this._dictMetas.forEach(dictMeta => {
       const type = dictMeta.type
-      Vue.set(this.value, type, {})
       Vue.set(this.label, type, {})
       Vue.set(this.dict, type, [])
       if (dictMeta.lazy) {
@@ -77,7 +74,6 @@ function loadDict(dict, dictMeta) {
       }
       dict.dict[type].splice(0, Number.MAX_SAFE_INTEGER, ...dicts)
       dicts.forEach(d => {
-        Vue.set(dict.value[type], d.value, d.value)
         Vue.set(dict.label[type], d.value, d.label)
       })
       return dicts
