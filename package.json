@@ -14,7 +14,8 @@
   "scripts": {
     "build": "webpack --mode production",
     "lint": "eslint src",
-    "postinstall": "node -e \"require('./postinstall')\""
+    "lint:fix": "eslint src --fix",
+    "postinstall": "node ./postinstall"
   },
   "repository": {
     "type": "git",
