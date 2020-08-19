@@ -15,13 +15,15 @@ import Vue from 'vue'
 import VueDataDict from 'vue-data-dict'
 
 Vue.use(VueDataDict, {
-  meta: {
-    request(dictMeta) {
-      return Promise // get data from remote server
-    },
-    responseConverter(response, dictMeta) {
-      // you can use "VueDataDict.DictConverter({ ... }, dictMeta)" to convert Object to DictData
-      return [] // Array.<DictData>
+  metas: {
+    '*': {
+      request(dictMeta) {
+        return Promise // get data from remote server
+      },
+      responseConverter(response, dictMeta) {
+        // you can use "VueDataDict.DictConverter({ ... }, dictMeta)" to convert Object to DictData
+        return [] // Array.<DictData>
+      }
     }
   }
 })
