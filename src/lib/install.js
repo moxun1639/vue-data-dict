@@ -8,8 +8,10 @@ export default function(Vue, options) {
       if (this.$options.dicts === undefined || this.$options.dicts === null) {
         return {}
       }
+      const dict = new Dict()
+      dict.owner = this
       return {
-        dict: new Dict(),
+        dict
       }
     },
     created() {
