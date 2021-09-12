@@ -15,6 +15,12 @@ import Vue from 'vue'
 import VueDataDict from 'vue-data-dict'
 
 Vue.use(VueDataDict, {
+  onCreated(dict) {
+    console.log('dict created: %o', dict)
+  },
+  onReady(dict) {
+    console.log('dict ready: %o', dict)
+  },
   metas: {
     '*': {
       request(dictMeta) {
