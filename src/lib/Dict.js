@@ -15,6 +15,7 @@ const DEFAULT_DICT_OPTIONS = {
  */
 export default class Dict {
   constructor() {
+    this.owner = null
     this.label = {}
     this.dict = {}
   }
