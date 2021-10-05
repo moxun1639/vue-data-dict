@@ -62,7 +62,11 @@ export default class Dict {
  * @returns {Promise}
  */
 function loadDict(dict, dictMeta) {
-  return dictMeta.request(dictMeta)
+  let dictReq = dictMeta.request(dictMeta)
+  if (!(dictReq instanceof Promise)) {
+    dictReq = Promise.resolve(dictReq)
+  }
+  return dictReq
     .then(response => {
       const type = dictMeta.type
       let dicts = dictMeta.responseConverter(response, dictMeta)

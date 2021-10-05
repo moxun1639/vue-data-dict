@@ -5,7 +5,7 @@ export const options = {
   metas: {
     '*': {
       /**
-       * 字典请求，方法签名为function(dictMeta: DictMeta): Promise
+       * 字典请求，方法签名为function(dictMeta: DictMeta): Promise | Array
        */
       request: (dictMeta) => {
         console.log(`load dict ${dictMeta.type}`)
