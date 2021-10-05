@@ -10,14 +10,14 @@ const DEFAULT_DICT_OPTIONS = {
 /**
  * @classdesc 字典
  * @property {Object} label 标签对象，内部属性名为字典类型名称
- * @property {Object} dict 字段数组，内部属性名为字典类型名称
+ * @property {Array} dict 字段数组，内部属性名为字典类型名称
  * @property {Array.<DictMeta>} _dictMetas 字典元数据数组
  */
 export default class Dict {
   constructor() {
     this.owner = null
     this.label = {}
-    this.dict = {}
+    this.dict = []
   }
 
   init(options) {
