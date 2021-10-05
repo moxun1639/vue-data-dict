@@ -33,6 +33,6 @@ DictMeta.parse= function(options) {
   } else if (typeof options === 'object') {
     opts = options
   }
-  opts = merge.recursive(true, DictOptions.metas['*'], opts)
+  opts = merge.recursive(true, DictOptions.metas['*'], DictOptions.metas[opts.type], opts)
   return new DictMeta(opts)
 }
