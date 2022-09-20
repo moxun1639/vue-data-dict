@@ -36,7 +36,7 @@ export const options = {
  * @returns {DictData}
  */
 function responseConverter(response, dictMeta) {
-  const dicts = response.content instanceof Array ? response.content : response
+  const dicts = Object.prototype.toString.call(response.content) === '[object Array]' ? response.content : [ response ]
   if (dicts === undefined) {
     console.warn(`no dict data of "${dictMeta.type}" found in the response`)
     return []
