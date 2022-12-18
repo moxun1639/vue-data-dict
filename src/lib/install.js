@@ -9,7 +9,6 @@ export default function(Vue, options) {
         return {}
       }
       const dict = new Dict()
-      dict.owner = this
       return {
         dict
       }
@@ -18,6 +17,7 @@ export default function(Vue, options) {
       if (!(this.dict instanceof Dict)) {
         return
       }
+      this.dict.owner = this
       options.onCreated && options.onCreated(this.dict)
       this.dict.init(this.$options.dicts).then(() => {
         options.onReady && options.onReady(this.dict)
