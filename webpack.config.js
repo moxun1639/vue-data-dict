@@ -5,7 +5,7 @@ const pkg = require('./package.json')
 
 const banner = '/*!\n' +
   ` * ${pkg.name} v${pkg.version}\n` +
-  ` * © 2020-${new Date().getFullYear()} ${pkg.author}<mxnstrive@gmail.com>\n` +
+  ` * © 2020-${new Date().getFullYear()} ${pkg.author}\n` +
   ` * Released under the ${pkg.license} License.\n` +
   ' */'
 
