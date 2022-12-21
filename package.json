@@ -42,7 +42,6 @@
     "webpack-cli": "^3.3.8"
   },
   "dependencies": {
-    "merge": "^1.2.1",
-    "vue": "^2.6.11"
+    "merge": "^1.2.1"
   }
 }

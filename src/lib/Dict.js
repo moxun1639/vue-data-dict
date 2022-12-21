@@ -1,4 +1,4 @@
-import Vue from 'vue'
+import Dependency from './Dependency'
 import DictMeta from './DictMeta'
 import DictData from './DictData'
 import merge from 'merge'
@@ -42,8 +42,8 @@ export default class Dict {
     const dictMeta = DictMeta.parse(options)
     this._dictMetas.push(dictMeta)
     const type = dictMeta.type
-    Vue.set(this.label, type, {})
-    Vue.set(this.dict, type, [])
+    Dependency.Vue.set(this.label, type, {})
+    Dependency.Vue.set(this.dict, type, [])
     if (dictMeta.lazy) {
       return
     }
@@ -101,7 +101,7 @@ function loadDict(dict, dictMeta) {
     }
     dict.dict[type].splice(0, Number.MAX_SAFE_INTEGER, ...dicts)
     dicts.forEach(d => {
-      Vue.set(dict.label[type], d.value, d.label)
+      Dependency.Vue.set(dict.label[type], d.value, d.label)
     })
     return dicts
   })

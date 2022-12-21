@@ -1,7 +1,9 @@
+import Dependency from './Dependency'
 import Dict from './Dict'
 import { mergeOptions } from './DictOptions'
 
 export default function(Vue, options) {
+  Dependency.Vue = Vue
   mergeOptions(options)
   Vue.mixin({
     data() {
