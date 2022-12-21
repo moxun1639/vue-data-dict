@@ -67,7 +67,19 @@ export default {
       // dict ready event
     },
     toLoadDict() {
-      this.dict.reloadDict('dict2')
+      this.dict.reload('dict2').then(dict => {
+        // do something
+      })
+    },
+    toRegisterDict() {
+      this.dict.register('dict3').then(dict => {
+        // do something
+      })
+    },
+    toWaitDict() {
+      this.dict.wait('dict1').then(dict => {
+        // do something
+      })
     },
   }
 }
