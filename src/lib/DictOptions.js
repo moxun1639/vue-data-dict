@@ -1,4 +1,4 @@
-import merge from 'merge'
+import merge from './util/merge'
 import dictConverter from './DictConverter'
 
 export const options = {

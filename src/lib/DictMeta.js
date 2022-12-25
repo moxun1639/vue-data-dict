@@ -1,5 +1,5 @@
 import DictOptions from './DictOptions'
-import merge from 'merge'
+import merge from './util/merge'
 
 /**
  * @classdesc 字典元数据
@@ -26,13 +26,12 @@ export default class DictMeta {
  * @returns {DictMeta}
  */
 DictMeta.parse= function(options) {
-  let opts = null
+  const opts = merge.recursive({}, DictOptions.metas['*'])
   if (typeof options === 'string') {
-    opts = DictOptions.metas[options] || {}
     opts.type = options
+    merge.recursive(opts, DictOptions.metas[options])
   } else if (typeof options === 'object') {
-    opts = options
+    merge.recursive(opts, DictOptions.metas[options.type], options)
   }
-  opts = merge.recursive(true, DictOptions.metas['*'], DictOptions.metas[opts.type], opts)
   return new DictMeta(opts)
 }

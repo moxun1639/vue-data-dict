@@ -1,7 +1,7 @@
 import Dependency from './Dependency'
 import DictMeta from './DictMeta'
 import DictData from './DictData'
-import merge from 'merge'
+import merge from './util/merge'
 
 const DEFAULT_DICT_OPTIONS = {
   types: [],
