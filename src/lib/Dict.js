@@ -100,9 +100,20 @@ function loadDict(dict, dictMeta) {
       dicts = []
     }
     dict.dict[type].splice(0, Number.MAX_SAFE_INTEGER, ...dicts)
+
+    const { Vue } = Dependency
+    const typeLabel = dict.label[type]
+    const keyMap = {}
+    for(let k in typeLabel) {
+      keyMap[k] = 0
+    }
     dicts.forEach(d => {
-      Dependency.Vue.set(dict.label[type], d.value, d.label)
+      Vue.set(typeLabel, d.value, d.label)
+      delete keyMap[d.value]
     })
+    for(let k in keyMap) {
+      Vue.delete(typeLabel, k)
+    }
     return dicts
   })
   dict.dict[dictMeta.type].loader = loader
