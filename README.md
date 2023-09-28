@@ -1,5 +1,11 @@
 # data dict for Vue.js
 
+## News
+
+Data dict for Vue2 at [mxnjs/vue-data-dict](https://github.com/mxnjs/vue-data-dict)
+
+Data dict for Vue3 at [mxnjs/vue3-data-dict](https://github.com/mxnjs/vue3-data-dict) 
+
 ## Installation
 
 ```js
